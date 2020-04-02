@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Workouter</string>
+    <string name="add_set">Add set</string>
+    <string name="exercise_name">Exercise Name</string>
+</resources>
