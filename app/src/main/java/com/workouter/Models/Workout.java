@@ -39,4 +39,7 @@ public class Workout implements Serializable {
     public void setExercisesModel(List<ExerciseModel> exercisesModel) {
         this.exercisesModel = exercisesModel;
     }
+    public ExerciseModel getExercise(int position){
+        return this.exercisesModel.get(position);
+    }
 }

@@ -42,7 +42,7 @@ public class WorkoutActivity  extends AppCompatActivity {
         final int position_workout = (int)intent.getSerializableExtra("position_workout");
 
         workoutDataHolder = WorkoutDataHolder.getInstance();
-        exerciseModel = workoutDataHolder.getWorkouts().get(position_workout).getExerciseModel();
+        exerciseModel = workoutDataHolder.getWorkout(position_workout).getExerciseModel();
         if(exerciseModel == null){
             return;
         }

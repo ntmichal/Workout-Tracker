@@ -41,8 +41,8 @@ public class ExerciseActivity extends AppCompatActivity {
         workoutDataHolder = WorkoutDataHolder.getInstance();
 
         exerciseModelList = workoutDataHolder
-                .getWorkouts().get(position_workout)
-                .getExerciseModel().get(position_exercise);
+                .getWorkout(position_workout)
+                .getExercise(position_exercise);
         weightAndRepsList = exerciseModelList.getWeightAndRepsList();
 
         final WeightAndRepsAdapter weightAndRepsAdapter =

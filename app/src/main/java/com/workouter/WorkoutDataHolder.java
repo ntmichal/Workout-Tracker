@@ -54,6 +54,10 @@ public class WorkoutDataHolder{
         this.workoutList.add(workout);
     }
 
+    public Workout getWorkout(int position){
+        return this.workoutList.get(position);
+    }
+
     public WorkoutBuilder builder(){
         return new WorkoutBuilder();
     }
