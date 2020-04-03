@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.workouter.Adapters.WorkoutAdapter;
@@ -91,6 +92,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        TextView textView = dialog.findViewById(R.id.workoutName);
+        String elo = WorkoutDataHolder.getInstance().getWorkout(position).getWorkoutName();
+        textView.setText(elo);
     }
 
     public void openCreateWorkoutDialog(){
