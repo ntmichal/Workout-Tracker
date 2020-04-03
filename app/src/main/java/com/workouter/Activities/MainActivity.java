@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent appInfo = new Intent(MainActivity.this, WorkoutActivity.class);
-                appInfo.putExtra("position_exercise", position);
+                appInfo.putExtra("position_workout", position);
                 startActivity(appInfo);
                 dialog.cancel();
             }

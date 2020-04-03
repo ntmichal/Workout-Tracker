@@ -23,6 +23,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
     ListView listView;
     Button button;
+    Button button1;
     List<WeightAndReps> weightAndRepsList;
     ExerciseModel exerciseModelList;
     WorkoutDataHolder workoutDataHolder;
@@ -62,7 +63,14 @@ public class ExerciseActivity extends AppCompatActivity {
                 weightAndRepsAdapter.add(new WeightAndReps());
             }
         });
-
+        button1 = (Button)findViewById(R.id.button_cancel);
+        button1.setText("Finish");
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 

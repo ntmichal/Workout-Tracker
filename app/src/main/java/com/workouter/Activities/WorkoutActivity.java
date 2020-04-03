@@ -1,5 +1,6 @@
 package com.workouter.Activities;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.ListView;
 
 
 import com.workouter.Adapters.ExerciseAdapter;
+import com.workouter.Dialog.MyAlertDialog;
 import com.workouter.Models.ExerciseModel;
 import com.workouter.Models.WeightAndReps;
 import com.workouter.Models.Workout;
@@ -21,10 +23,12 @@ import java.util.List;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 public class WorkoutActivity  extends AppCompatActivity {
     ListView listView;
     Button button;
+    Button buttonFinish;
     WorkoutDataHolder workoutDataHolder;
     List<ExerciseModel> exerciseModel;
     ExerciseAdapter workoutAdapter;
@@ -35,7 +39,7 @@ public class WorkoutActivity  extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.exercisesList);
 
         final Intent intent = getIntent();
-        final int position_workout = (int)intent.getSerializableExtra("position_exercise");
+        final int position_workout = (int)intent.getSerializableExtra("position_workout");
 
         workoutDataHolder = WorkoutDataHolder.getInstance();
         exerciseModel = workoutDataHolder.getWorkouts().get(position_workout).getExerciseModel();
@@ -67,13 +71,23 @@ public class WorkoutActivity  extends AppCompatActivity {
         button.setText("ADD EXERCISE");
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-//there open exercises list to add to workout, send position_exercise
+
                 Intent intent1 = new Intent(WorkoutActivity.this,AddExercisesActivity.class);
                 intent1.putExtra("position_workout", position_workout);
                 startActivityForResult(intent1,1);
 
             }
         });
+
+        buttonFinish = findViewById(R.id.button_cancel);
+        buttonFinish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDialog();
+            }
+        });
+
+
 
 
     }
@@ -92,5 +106,11 @@ public class WorkoutActivity  extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+    }
+
+    void openDialog(){
+        MyAlertDialog myAlertDialog = new MyAlertDialog();
+        myAlertDialog.show(getSupportFragmentManager(),"alert");
+
     }
 }

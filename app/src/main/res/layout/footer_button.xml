@@ -9,4 +9,12 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Add set" />
+
+    <Button
+        android:id="@+id/button_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Cancel Workout" />
+
 </LinearLayout>
