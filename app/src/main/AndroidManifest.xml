@@ -21,6 +21,7 @@
 
         <activity android:name=".Activities.WorkoutActivity"
             android:parentActivityName=".Activities.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -29,6 +30,7 @@
 
         <activity android:name=".Activities.ExerciseActivity"
             android:parentActivityName=".Activities.WorkoutActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:launchMode="singleInstance"
             android:inputType="number"
             android:windowSoftInputMode="adjustPan"
@@ -39,6 +41,7 @@
         </activity>
         <activity android:name=".Activities.AddExercisesActivity"
             android:parentActivityName=".Activities.WorkoutActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:launchMode="singleInstance"
             android:inputType="number"
             android:windowSoftInputMode="adjustPan"

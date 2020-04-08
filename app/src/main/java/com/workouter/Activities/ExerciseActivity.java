@@ -18,6 +18,7 @@ import com.workouter.WorkoutDataHolder;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class ExerciseActivity extends AppCompatActivity {
 
@@ -31,6 +32,8 @@ public class ExerciseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.exercise_layout);
+
+
         listView = (ListView)findViewById(R.id.kgrepsList);
 
         Intent intent = getIntent();

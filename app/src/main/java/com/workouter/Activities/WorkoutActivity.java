@@ -4,10 +4,15 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Layout;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+
 
 
 import com.workouter.Adapters.ExerciseAdapter;
@@ -20,10 +25,12 @@ import com.workouter.WorkoutDataHolder;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
+import androidx.appcompat.widget.Toolbar;
+
 
 public class WorkoutActivity  extends AppCompatActivity {
     ListView listView;
@@ -36,6 +43,19 @@ public class WorkoutActivity  extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.workout_layout);
+
+        Toolbar toolbar = findViewById(R.id.custom_toolbar);
+        setSupportActionBar(toolbar);
+
+        // add back arrow to toolbar
+//        toolbar.setNavigationIcon(R.drawable.ic_back_arrow);
+
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+
+
         listView = (ListView)findViewById(R.id.exercisesList);
 
         final Intent intent = getIntent();
@@ -108,9 +128,35 @@ public class WorkoutActivity  extends AppCompatActivity {
         super.onResume();
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
+
+    //    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+////
+//        getMenuInflater().inflate(R.layout.custom_toolbar);
+////
+//        return super.onCreateOptionsMenu(menu);
+//
+//    }
+
     void openDialog(){
         MyAlertDialog myAlertDialog = new MyAlertDialog();
         myAlertDialog.show(getSupportFragmentManager(),"alert");
 
     }
+
+
 }
