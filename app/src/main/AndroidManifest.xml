@@ -30,7 +30,6 @@
 
         <activity android:name=".Activities.ExerciseActivity"
             android:parentActivityName=".Activities.WorkoutActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:launchMode="singleInstance"
             android:inputType="number"
             android:windowSoftInputMode="adjustPan"

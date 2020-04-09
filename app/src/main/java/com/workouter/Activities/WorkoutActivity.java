@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-
+import android.widget.Toast;
 
 
 import com.workouter.Adapters.ExerciseAdapter;
@@ -46,9 +46,6 @@ public class WorkoutActivity  extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.custom_toolbar);
         setSupportActionBar(toolbar);
-
-        // add back arrow to toolbar
-//        toolbar.setNavigationIcon(R.drawable.ic_back_arrow);
 
         if (getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -131,10 +128,12 @@ public class WorkoutActivity  extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
         switch (item.getItemId()) {
             case android.R.id.home:
-                finish();
+                openDialog();
+                return true;
+            case R.id.toolbar_button:
+                saveWorkout();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -143,19 +142,25 @@ public class WorkoutActivity  extends AppCompatActivity {
 
 
 
-    //    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-////
-//        getMenuInflater().inflate(R.layout.custom_toolbar);
-////
-//        return super.onCreateOptionsMenu(menu);
-//
-//    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.custom_menu, menu);
+        return true;
+    }
 
     void openDialog(){
         MyAlertDialog myAlertDialog = new MyAlertDialog();
         myAlertDialog.show(getSupportFragmentManager(),"alert");
 
+    }
+    void saveWorkout(){
+        Toast.makeText(WorkoutActivity.this, "Finished workout", Toast.LENGTH_SHORT).show();
+
+        //// TO DO SAVE WORKOUT
+
+        finish();
     }
 
 
