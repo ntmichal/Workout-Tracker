@@ -1,11 +1,7 @@
 package com.workouter.Activities;
 
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Layout;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,16 +14,12 @@ import android.widget.Toast;
 import com.workouter.Adapters.ExerciseAdapter;
 import com.workouter.Dialog.MyAlertDialog;
 import com.workouter.Models.ExerciseModel;
-import com.workouter.Models.WeightAndReps;
-import com.workouter.Models.Workout;
 import com.workouter.R;
 import com.workouter.WorkoutDataHolder;
 
 import java.util.List;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -145,7 +137,6 @@ public class WorkoutActivity  extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.custom_menu, menu);
         return true;
     }
@@ -157,9 +148,6 @@ public class WorkoutActivity  extends AppCompatActivity {
     }
     void saveWorkout(){
         Toast.makeText(WorkoutActivity.this, "Finished workout", Toast.LENGTH_SHORT).show();
-
-        //// TO DO SAVE WORKOUT
-
         finish();
     }
 

@@ -4,12 +4,15 @@ import com.workouter.ExerciseType;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Stream;
 
-public class ExerciseModel implements Serializable {
+import androidx.annotation.NonNull;
+
+public class ExerciseModel implements Serializable, Cloneable{
     private int id;
     private String exerciseName;
-    private ExerciseType exerciseType;
     private List<WeightAndReps> weightAndRepsList;
 
     public ExerciseModel(int id, String exerciseName){
@@ -61,7 +64,21 @@ public class ExerciseModel implements Serializable {
         private int id;
         private String exerciseName;
         private List<WeightAndReps> weightAndRepsList;
+    }
 
+    @NonNull
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        List<WeightAndReps> weightAndRepsTemp = new ArrayList<>();
+        Iterator<WeightAndReps> iterator = weightAndRepsList.iterator();
+        while(iterator.hasNext()){
+            weightAndRepsTemp.add((WeightAndReps)iterator.next().clone());
+        }
+
+        return new ExerciseModel(this.id, this.exerciseName, weightAndRepsTemp);
 
     }
+
+
+
 }

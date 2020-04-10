@@ -5,6 +5,7 @@ import com.workouter.Models.Workout;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class WorkoutDataHolder{
     private String name;
@@ -58,6 +59,10 @@ public class WorkoutDataHolder{
         return this.workoutList.get(position);
     }
 
+    public void startNewWorkout(int position){
+        Workout workout = this.getWorkout(position);
+        workout.startNewWorkout();
+    }
     public WorkoutBuilder builder(){
         return new WorkoutBuilder();
     }
@@ -65,7 +70,7 @@ public class WorkoutDataHolder{
     public class WorkoutBuilder{
         private String name;
         private List<ExerciseModel> exerciseModelList = new ArrayList<>();
-
+        private Stack<List<ExerciseModel>> exercisesStack = new Stack<>();
         public WorkoutBuilder setName(String name) {
             this.name = name;
             return this;
@@ -78,7 +83,8 @@ public class WorkoutDataHolder{
 
         public void build(){
             Workout workout = new Workout(this.name);
-            workout.setExercisesModel(this.exerciseModelList);
+            this.exercisesStack.add(exerciseModelList);
+            workout.setExercisesModel(this.exercisesStack);
             WorkoutDataHolder.getInstance().addWorkout(workout);
         }
     }

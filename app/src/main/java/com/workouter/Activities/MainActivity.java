@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent appInfo = new Intent(MainActivity.this, WorkoutActivity.class);
+                WorkoutDataHolder.getInstance().startNewWorkout(position);
                 appInfo.putExtra("position_workout", position);
                 startActivity(appInfo);
                 dialog.cancel();

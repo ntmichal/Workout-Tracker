@@ -2,6 +2,8 @@ package com.workouter.Models;
 
 import java.io.Serializable;
 
+import androidx.annotation.NonNull;
+
 public class WeightAndReps implements Serializable {
     private int weight;
     private int repeats;
@@ -31,5 +33,11 @@ public class WeightAndReps implements Serializable {
     public WeightAndReps setRepeats(int repeats) {
         this.repeats = repeats;
         return this;
+    }
+
+    @NonNull
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return new WeightAndReps(this.weight,this.repeats);
     }
 }
